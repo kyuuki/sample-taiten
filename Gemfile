@@ -78,3 +78,6 @@ end
 
 # https://github.com/bkeepers/dotenv
 gem "dotenv-rails"
+
+# https://github.com/slim-template/slim-rails
+gem "slim-rails"
