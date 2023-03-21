@@ -81,3 +81,6 @@ gem "dotenv-rails"
 
 # https://github.com/slim-template/slim-rails
 gem "slim-rails"
+
+# パスワード認証に利用
+gem "bcrypt"

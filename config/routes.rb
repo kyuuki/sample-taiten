@@ -4,4 +4,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "static_page#root"
   # root to: "static_page#root"  # 上記はこれの省略形
+
+  #
+  # ログイン
+  #
+  scope "/users" do
+    get "log_in", to: "sessions#new"
+    post "log_in", to: "sessions#create"
+    get "log_out", to: "sessions#delete"
+  end
 end
