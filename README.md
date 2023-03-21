@@ -1,5 +1,5 @@
-Rails 7 実用サンプル Bootstrap
-==============================
+雑 Taiten
+=========
 
 [![Build status][shield-build]](#)
 [![MIT licensed][shield-license]](#)
