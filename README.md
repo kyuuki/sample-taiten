@@ -1,11 +1,11 @@
-Rails 7 実用サンプルベース
-==========================
+Rails 7 実用サンプル Bootstrap
+==============================
 
 [![Build status][shield-build]](#)
 [![MIT licensed][shield-license]](#)
 [![Rails][shield-rails]][rails]
 
-Rails で実用的なサンプルを作成するためのベース
+Rails で Bootstrap を利用した、実用的なサンプルを作成するためのベース
 
 ## Table of Contents
 
@@ -19,57 +19,39 @@ Rails で実用的なサンプルを作成するためのベース
 
 * [Rails][rails] 7.0.4.3
 * [PostgreSQL][postgresql]
+* [Bootstrap][bootstrap] 4.6.2
 
 ## How to make
 
 ### Rails アプリケーション作成
 
 ```sh
-$ git clone git@github.com:kyuuki/sample-rails7-base.git sample-rails7-practical-base
-$ cd sample-rails7-practical-base
+$ git clone git@github.com:kyuuki/sample-rails7-practical-base.git sample-rails7-practical-bootstrap
+$ cd sample-rails7-practical-bootstrap
 ```
 
 ### GitHub
 
-- GitHub に sample-rails7-practical-base という名前でリポジトリ追加
+- GitHub に sample-rails7-practical-bootstrap という名前でリポジトリ追加
 
 
 ```sh
-git remote set-url origin git@github.com:kyuuki/sample-rails7-practical-base.git
+git remote set-url origin git@github.com:kyuuki/sample-rails7-practical-bootstrap.git
 git push
 ```
 
-### Minitest 導入
+### Bootstrap 4 導入
 
-- factory_bot 導入
-- システムテスト追加
+以下を参考にして組み込み。
 
-### GitHub Action 設定
-
-- GitHub で Ruby on Rails 用のワークフローを作成
-- ワークフローを編集
-
-### 設定ファイル追加
-
-- config/setting.yml 作成
-- config/setting.yml を設定ファイルとして読み込むようにする
-- ルートページで設定ファイルの内容を表示
-
-### dotenv 導入
-
-- Gem 追加
-- config/credentials.yml.enc 削除
-
-### Slim 導入
-
-- Gem 追加
-- ルートページを Slim 化
+- Bootstrap 4 の [Starter template](https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template)
+- Bootstrap 4 の [Sticky footer with fixed navbar](https://getbootstrap.com/docs/4.6/examples/sticky-footer-navbar/)
 
 ## Usage
 
 ```sh
-$ git clone git@github.com:kyuuki/sample-rails7-practical-base.git
-$ cd sample-rails7-practical-base
+$ git clone git@github.com:kyuuki/sample-rails7-practical-bootstrap.git
+$ cd sample-rails7-practical-bootstrap
 $ bundle install
 $ rails db:create
 $ rails s -b 0.0.0.0
@@ -79,6 +61,7 @@ $ rails s -b 0.0.0.0
 
 * [Ruby on Rails Guides (v7.0.x) (英)](https://guides.rubyonrails.org/v7.0/)
 * [Ruby on Rails ガイド (日)](https://railsguides.jp/)
+* [Bootstrap Documentation (4.6) ](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 
 ## License
 
@@ -89,6 +72,7 @@ Copyright &copy; 2023 [Fuji Programming Laboratory](https://fuji-labo.com/)
 
 [rails]: https://rubyonrails.org/
 [postgresql]: https://www.postgresql.org/
+[bootstrap]: https://getbootstrap.com/
 
 [shield-build]: https://img.shields.io/badge/build-passing-brightgreen.svg
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
