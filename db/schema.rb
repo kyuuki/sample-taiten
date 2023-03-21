@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_21_095421) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_124242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "registering_user_passwords", force: :cascade do |t|
+    t.bigint "registering_user_id", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["registering_user_id"], name: "index_registering_user_passwords_on_registering_user_id"
+  end
+
+  create_table "registering_user_tokens", force: :cascade do |t|
+    t.bigint "registering_user_id", null: false
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["registering_user_id"], name: "index_registering_user_tokens_on_registering_user_id"
+    t.index ["token"], name: "index_registering_user_tokens_on_token", unique: true
+  end
+
+  create_table "registering_users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_registering_users_on_email", unique: true
+  end
 
   create_table "user_password_authentications", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -30,5 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_095421) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "registering_user_passwords", "registering_users"
+  add_foreign_key "registering_user_tokens", "registering_users"
   add_foreign_key "user_password_authentications", "users"
 end

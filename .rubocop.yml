@@ -10,3 +10,7 @@ Layout/LeadingCommentSpace:
 
 Layout/CommentIndentation:
   Enabled: false  # 一時的に無効にするときにインデントはズレる
+
+Style/HashSyntax:
+  # https://koic.hatenablog.com/entry/rubocop-supports-ruby-3-1-syntax
+  EnforcedShorthandSyntax: never  # まだ、時期尚早
