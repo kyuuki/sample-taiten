@@ -13,4 +13,7 @@ Rails.application.routes.draw do
     post "log_in", to: "sessions#create"
     get "log_out", to: "sessions#delete"
   end
+
+  # https://github.com/fgrehm/letter_opener_web
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
