@@ -14,4 +14,14 @@ class UserMailer < ApplicationMailer
 
     mail(to: @registering_user.email, subject: "【#{Rails.configuration.setting[:app_name]}】メールアドレス認証手続きを完了してください")
   end
+
+  #
+  # パスワードリセット
+  #
+  def password_reset(user, token)
+    @user = user
+    @token = token
+
+    mail(to: @user.email, subject: "【#{Rails.configuration.setting[:app_name]}】パスワードリセット手続きを完了してください")
+  end
 end

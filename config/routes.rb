@@ -5,13 +5,21 @@ Rails.application.routes.draw do
   root "static_page#root"
   # root to: "static_page#root"  # 上記はこれの省略形
 
-  #
-  # ログイン
-  #
-  scope "/users" do
+  scope "/user" do
+    #
+    # ログイン
+    #
     get "log_in", to: "sessions#new"
     post "log_in", to: "sessions#create"
     get "log_out", to: "sessions#delete"
+
+    #
+    # パスワードリセット
+    #
+    get "password_reset", to: "password_resets#new"
+    post "password_reset", to: "password_resets#create"
+    get "password_reset/new_password/:token", to: "password_resets#new_password", as: "password_reset_new_password"
+    post "password_reset/new_password/update", to: "password_resets#new_password_update"
   end
 
   #
