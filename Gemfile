@@ -88,3 +88,7 @@ gem "slim-rails"
 
 # パスワード認証に利用
 gem "bcrypt"
+
+# i18n
+# https://github.com/svenfuchs/rails-i18n
+gem "rails-i18n"

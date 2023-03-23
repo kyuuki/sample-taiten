@@ -1,0 +1,28 @@
+common_email: &common_email
+  email: メールアドレス
+common_password: &common_password
+  password: パスワード
+
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      registering_user: ユーザー
+    attributes:
+      user: &user
+        <<: *common_email
+        nickname: ニックネーム
+      user_password_authentication: &user_password_authentication
+        <<: *common_password
+        password_confirmation: パスワード（確認入力）
+      registering_user: *user
+      registering_user_password: *user_password_authentication
+  activemodel:
+    attributes:
+      log_in_form:
+        <<: *common_email
+        <<: *common_password
+      password_reset_form:
+        <<: *common_email
+      password_reset_new_password_form:
+        <<: *common_password
