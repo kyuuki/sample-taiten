@@ -5,7 +5,7 @@ shared:
 
 development:
   app_name: Taiten (development)
-  host: rails-dev.akoba.xyz  # 開発者ごとに変わるのは共通のファイルに書きたくない。データベースも同じか。
+  host: rails-dev3.akoba.xyz  # 開発者ごとに変わるのは共通のファイルに書きたくない。データベースも同じか。
 
 production:
   host: sample-taiten.akoba.xyz

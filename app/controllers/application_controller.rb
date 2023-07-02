@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   # ログイン機能
   #
   # - TODO: 別ファイルにわける
+  # - メソッド名は Devise を参考に
   #
   def log_in(user)
     session[:user_id] = user.id
@@ -20,12 +21,22 @@ class ApplicationController < ActionController::Base
     !!session[:user_id]
   end
 
-  def current_registrated_user
+  def current_user
     return nil if session[:user_id].nil?
 
     # ||=
     @current_user ||= User.find_by(id: session[:user_id])
 
     @current_user
+  end
+
+  #
+  # フィルター用ユーザー認証メソッド
+  #
+  def authenticate_user!
+    if not logged_in?
+      flash[:alert] = "ログインしてください。"
+      redirect_to log_in_url
+    end
   end
 end

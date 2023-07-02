@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "profiles/edit"
+  get "profiles/update"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -28,6 +30,13 @@ Rails.application.routes.draw do
   get "/users/sign_up", to: "registering_users#new"
   get "/users/confirm/:token", to: "registering_users#confirm", as: "users_confirm"
   resources :registering_users, only: [ :create ]
+
+  #
+  # マイページ
+  #
+  scope "/mypage" do
+    resource :profile, only: [ :edit, :update ]
+  end
 
   # https://github.com/fgrehm/letter_opener_web
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
