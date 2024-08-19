@@ -7,18 +7,25 @@ class RegisteringUsersController < ApplicationController
   # - 致命的エラー補足
   # - 論理削除
 
+  #
+  # 新規登録
+  #
   def new
-    # TODO: ログイン中は新規登録させない
+    # ログイン中は新規登録させない
+    if logged_in?
+      redirect_to root_url
+      return
+    end
 
     @registering_user_password = RegisteringUserPassword.new
     # @registering_user_password.registering_user は特に作らなくても大丈夫そう
   end
 
   #
-  # ユーザー登録 → 登録中
+  # 新規登録 → 登録中
   #
   # - パターン
-  #   1. 全くの新規
+  #   1. 全くの新規 → トークン送信
   #   2. ユーザー登録済 → エラー
   #   3. ユーザー登録中 → トークン再送信
   #

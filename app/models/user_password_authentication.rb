@@ -2,6 +2,7 @@ class UserPasswordAuthentication < ApplicationRecord
   has_secure_password
   belongs_to :user
 
+  # TODO: 何でチェックしちゃダメなんだっけ？
   # 直接 password_digest を設定する方法の時はチェックしない
   # (このモデルはユーザー登録方法に依存したくないのでこの Validation も残しておく)
   # https://hene.dev/blog/2019/06/03/rails-validation
