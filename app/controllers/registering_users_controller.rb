@@ -3,8 +3,8 @@
 #
 class RegisteringUsersController < ApplicationController
   # TODO: Rails 共通基盤
-  # - 致命的エラー補足
   # - 設定ファイル
+  # - 致命的エラー補足
   # - 論理削除
 
   def new
@@ -51,7 +51,7 @@ class RegisteringUsersController < ApplicationController
     if not User.find_by(email: registering_user.email).nil?
       # Twitter でも同様のケースで「このメールアドレスは既に使われています。」と出るので、
       # 登録済みであることは通知して問題はなさそう
-      flash.now[:alert] = "メールアドレスはすでに使われています。"
+      flash.now[:alert] = t("registering_user.already_used_email")
       render :new  # エラー画面に戻すので @registering_user と @registering_user_password は必要
       # TODO: Validation と同じ通知方法 (画面に固定で出力する) にするほうがよい？View をちょっと直すだけで一瞬
       return
@@ -104,7 +104,7 @@ class RegisteringUsersController < ApplicationController
     end
 
     # TODO: 確認メール送信は notice じゃなく、きちんと画面で説明した方がよい。
-    redirect_to root_path, notice: "確認メールが送信されました。"
+    redirect_to root_path, notice: t("registering_user.sent_confirm_email")
   end
 
   #
@@ -113,7 +113,7 @@ class RegisteringUsersController < ApplicationController
   def confirm
     if params[:token].nil?
       # TODO: ログは出しておくべき
-      redirect_to root_path, alert: "URL をもう一度確認してください"  # TODO: メッセージ一元化
+      redirect_to root_path, alert: t("registering_user.check_url")
       return
     end
 
@@ -122,7 +122,7 @@ class RegisteringUsersController < ApplicationController
 
     if registering_user.nil?
       # TODO: ログは出しておくべき
-      redirect_to root_path, alert: "URL をもう一度確認してください"  # TODO: メッセージ一元化
+      redirect_to root_path, alert: t("registering_user.check_url")
       return
     end
 
@@ -169,13 +169,13 @@ class RegisteringUsersController < ApplicationController
       # TODO: ログをどうするか、ログ監視をどうするか
       logger.fatal e.backtrace.join("\n")
 
-      redirect_to root_path, alert: "新規登録に失敗しました"  # TODO: メッセージ一元化
+      redirect_to root_path, alert: t("registering_user.registering_error")
       return
     end
 
     log_in(user)
 
-    redirect_to root_path, notice: "新規登録されました。"
+    redirect_to root_path, notice: t("registering_user.registering_done")
   end
 
   private

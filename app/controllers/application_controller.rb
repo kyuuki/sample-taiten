@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   #
   def authenticate_user!
     if not logged_in?
-      flash[:alert] = "ログインしてください。"
+      flash[:alert] = t("session.please_login")
       redirect_to log_in_url
     end
   end

@@ -26,3 +26,26 @@ ja:
         <<: *common_email
       password_reset_new_password_form:
         <<: *common_password
+
+  # ユーザー登録用メッセージ
+  registering_user:
+    sent_confirm_email: "確認メールが送信されました。"
+    already_used_email: "メールアドレスはすでに使われています。"
+    registering_done: "新規登録されました。"
+    registering_error: "新規登録に失敗しました。"
+    check_url: "URL をもう一度確認してください。"
+
+  # パスワードリセット用メッセージ
+  password_reset:
+    sent_email: "登録されているメールアドレス宛にメールを送信しました。"
+    check_url: "URL をもう一度確認してください。"
+    please_restart: "最初から実行してください。"
+    password_reset_complete: "パスワードを変更しました。"
+
+  # ログイン用メッセージ
+  session:
+    login_error: "メールアドレスまたはパスワードをご確認ください。"
+    login_complete: "ログインしました。"
+    logout_complete: "ログアウトしました。"
+    please_login: "ログインしてください。"
+

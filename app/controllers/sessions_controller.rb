@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
     if user_password_authentication.nil? || (not user_password_authentication.authenticate(@form.password))
       # ログインエラー
-      flash.now[:alert] = "メールアドレスまたはパスワードをご確認ください。"
+      flash.now[:alert] = t("session.login_error")
       render :new
       return
     end
@@ -29,14 +29,14 @@ class SessionsController < ApplicationController
     log_in(user_password_authentication.user)
 
     # TODO: 現在表示しているページを保持するしくみ
-    redirect_to root_path, notice: "ログインしました。"
+    redirect_to root_path, notice: t("session.login_complete")
   end
 
   def delete
     log_out
 
     # TODO: 現在表示しているページを保持するしくみ
-    redirect_to root_path, notice: "ログアウトしました。"
+    redirect_to root_path, notice: t("session.logout_complete")
   end
 
   private

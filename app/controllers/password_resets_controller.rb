@@ -29,7 +29,7 @@ class PasswordResetsController < ApplicationController
     if user.nil?
       # メールアドレスが登録されているかがわからないように成功したときと同様にふるまう
       logger.info("Input unknown email (#{@form.email})")
-      redirect_to password_reset_url, notice: "登録されているメールアドレス宛にメールを送信しました。"
+      redirect_to password_reset_url, t("password_reset.sent_email")
       return
     end
 
@@ -51,7 +51,7 @@ class PasswordResetsController < ApplicationController
     end
 
     # TODO: 現在表示しているページを保持するしくみ
-    redirect_to password_reset_url, notice: "登録されているメールアドレス宛にメールを送信しました。"
+    redirect_to password_reset_url, notice: t("password_reset.sent_email")
   end
 
   #
@@ -64,7 +64,7 @@ class PasswordResetsController < ApplicationController
     password_reset = PasswordReset.find_by(token: token)
     if password_reset.nil?
       logger.info("Unknown token (#{token})")
-      redirect_to root_path, alert: "URL をもう一度確認してください。"  # TODO: メッセージ一元化
+      redirect_to root_path, t("password_reset.check_url")
       return
     end
 
@@ -88,14 +88,14 @@ class PasswordResetsController < ApplicationController
     password_reset = PasswordReset.find_by(token: @form.token)
     if password_reset.nil?
       # TODO: タイムアウトで無効になっているか。他の画面で更新済み。など
-      redirect_to root_path, alert: "最初から実行してください。"
+      redirect_to root_path, alert: t("password_reset.please_restart")
       return
     end
 
     user_password_authentication = UserPasswordAuthentication.find_by(user: password_reset.user)
     if user_password_authentication.nil?
       # TODO: 現状、ない場合はないはずなので、詳細にログを出力しておくこと
-      redirect_to root_path, alert: "最初から実行してください。"
+      redirect_to root_path, alert: t("password_reset.please_restart")
       return
     end
 
@@ -105,7 +105,7 @@ class PasswordResetsController < ApplicationController
       password_reset.destroy!
     end
 
-    redirect_to root_path, alert: "パスワードを変更しました。"
+    redirect_to root_path, alert: t("password_reset.password_reset_complete")
   end
 
   private
